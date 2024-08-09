@@ -39,7 +39,7 @@ function YoutubeForm() {
               value={formik.values.channel}
               onChange={formik.handleChange}
             />
-            <button type='submit'>Submit</button>
+            <button type='submit'>Submit the form</button>
         </form>
     </div>
   )
