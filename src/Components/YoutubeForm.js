@@ -9,7 +9,7 @@ function YoutubeForm() {
             channel:''
         },
         onSubmit: values => {
-            console.log('Form data',values)
+            console.log('data',values)
         }
     })
   return (
@@ -31,7 +31,7 @@ function YoutubeForm() {
              value={formik.values.email}
              onChange={formik.handleChange}
             />
-            <label htmlFor='channel'>channel</label>
+            <label htmlFor='channel'>Channel</label>
             <input
              type='text'
              id='channel'
