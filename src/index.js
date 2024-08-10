@@ -9,9 +9,7 @@ import FormikComponent from './Components/FormikComponent';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    {/* <YupFormValidation/> */}
-    <FormikComponent/>
+    <App />
   </React.StrictMode>
 );
 
