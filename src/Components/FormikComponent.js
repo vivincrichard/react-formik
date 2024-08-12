@@ -34,8 +34,12 @@ function FormikComponent() {
         validationSchema={validationSchema}
         validateOnBlur={false}
         validateOnChange={false}
+        // validateOnMount
         onSubmit={onSubmit}>
-            <Form>
+            {formik => {
+                console.log('formik',formik);
+                return (
+                    <Form>
                 <div className='form-control'>
                     <label htmlFor='name'>Name</label>
                     <Field type='text' id='name' name='name' />
@@ -92,7 +96,6 @@ function FormikComponent() {
                             const {push,remove,form} = fieldArrayProps
                             const {values} = form
                             const {phNumbers} = values
-                            console.log('form error',form.errors)
                             return <div>
                                 {
                                     phNumbers.map((phNumber,index)=>(
@@ -111,8 +114,10 @@ function FormikComponent() {
 
                 </div>
 
-                <button type='submit'>Submit</button>
+                <button type='submit' disabled={!(formik.dirty && formik.isValid)}>Submit</button>
             </Form>
+                )
+            }}
     </Formik>
   )
 }
