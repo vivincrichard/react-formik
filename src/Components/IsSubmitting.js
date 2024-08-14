@@ -23,19 +23,19 @@ const validationSchema = Yup.object({
     comments:Yup.string()
 })
 
-const onSubmit = values => {
+const onSubmit = (values,onsubmitProps) => {
     console.log('values',values);
+    console.log('submit props',onsubmitProps)
+    onsubmitProps.setSubmitting(false)
 }
 
-function FormikComponent() {
+function IsSubmitting() {
   return (
     <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        validateOnBlur={false} // when the required field is visited and not filled, it won't show any error. Rather it will give error while form submitted
-        validateOnChange={false}
-        // validateOnMount
-        onSubmit={onSubmit}>
+        onSubmit={onSubmit}
+    >
             {formik => {
                 console.log('formik',formik);
                 return (
@@ -43,25 +43,19 @@ function FormikComponent() {
                 <div className='form-control'>
                     <label htmlFor='name'>Name</label>
                     <Field type='text' id='name' name='name' />
-                    <ErrorMessage name='name'>
-                        {(er) => <div className='error'>{er}</div>}
-                    </ErrorMessage>
+                    <ErrorMessage name='name' component='div' className='error'/>
                 </div>
 
                 <div className='form-control'>
                     <label htmlFor='email'>Email</label>
                     <Field type='email' id='email' name='email'/>
-                    <ErrorMessage name='email'>
-                        {(er) => <div className='error'>{er}</div>}
-                    </ErrorMessage>
+                    <ErrorMessage name='email' component='div' className='error'/>
                 </div>
 
                 <div className='form-control'>
                     <label htmlFor='channel'>Channel</label>
                     <Field type='text' id='channel' name='channel'/>
-                    <ErrorMessage name='channel'>
-                        {(er) => <div className='error'>{er}</div>}
-                    </ErrorMessage>
+                    <ErrorMessage name='channel' component='div' className='error'/>
                 </div>
 
                 <div className='form-control'>
@@ -114,7 +108,7 @@ function FormikComponent() {
 
                 </div>
 
-                <button type='submit' disabled={!(formik.dirty && formik.isValid)}>Submit</button>
+                <button type='submit' disabled={formik.isSubmitting}>Submit</button>
             </Form>
                 )
             }}
@@ -122,4 +116,4 @@ function FormikComponent() {
   )
 }
 
-export default FormikComponent;
+export default IsSubmitting;

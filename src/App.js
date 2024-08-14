@@ -1,6 +1,7 @@
 
 import './App.css';
 import FormikComponent from './Components/FormikComponent';
+import IsSubmitting from './Components/IsSubmitting';
 import YoutubeForm from './Components/YoutubeForm';
 import YupFormValidation from './Components/YupFormValidation';
 
@@ -9,7 +10,8 @@ function App() {
     <div>
       {/* <YoutubeForm/> */}
       {/* <YupFormValidation/> */}
-      <FormikComponent/>
+      {/* <FormikComponent/> */}
+      <IsSubmitting/>
     </div>
   );
 }
